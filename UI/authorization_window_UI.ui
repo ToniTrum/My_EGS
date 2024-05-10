@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Authorization_window</class>
+ <widget class="QWidget" name="Authorization_window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -34,7 +34,7 @@
     </spacer>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="main_v_layout_of_authorization_window">
      <item>
       <spacer name="verticalSpacer_2">
        <property name="orientation">
@@ -52,7 +52,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QWidget" name="widget" native="true">
+      <widget class="QWidget" name="authorization_widget" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -87,12 +87,12 @@ background-color: rgb(65, 65, 65);</string>
          </spacer>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0,0">
+         <layout class="QVBoxLayout" name="v_layout_of_authorization_widget" stretch="0,0,0,0,0,0,0">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="register_label">
             <property name="minimumSize">
              <size>
-              <width>200</width>
+              <width>290</width>
               <height>30</height>
              </size>
             </property>
@@ -111,7 +111,7 @@ font: 63 25pt &quot;Yu Gothic UI Semibold&quot;;
 </string>
             </property>
             <property name="text">
-             <string>Вход</string>
+             <string>Зарегистрироваться</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -119,7 +119,7 @@ font: 63 25pt &quot;Yu Gothic UI Semibold&quot;;
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="lobin_label">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -152,7 +152,7 @@ font: 63 25pt &quot;Yu Gothic UI Semibold&quot;;
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit">
+           <widget class="QLineEdit" name="login_lineEdit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -171,7 +171,7 @@ font: 63 25pt &quot;Yu Gothic UI Semibold&quot;;
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="password_label">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -204,7 +204,7 @@ font: 63 25pt &quot;Yu Gothic UI Semibold&quot;;
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="lineEdit_2">
+           <widget class="QLineEdit" name="password_lineEdit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -223,35 +223,52 @@ font: 63 25pt &quot;Yu Gothic UI Semibold&quot;;
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
+           <widget class="QLabel" name="repeat_password_label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="sizeHint" stdset="0">
+            <property name="minimumSize">
              <size>
-              <width>20</width>
-              <height>40</height>
+              <width>200</width>
+              <height>30</height>
              </size>
             </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QCommandLinkButton" name="commandLinkButton">
             <property name="font">
              <font>
-              <family>Arial</family>
               <pointsize>12</pointsize>
-              <weight>9</weight>
-              <italic>false</italic>
-              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(0, 136, 255);
-font: 75 12pt &quot;Arial&quot;;</string>
+             <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>Зарегистрироваться</string>
+             <string>Повторите пароль</string>
+            </property>
+            <property name="indent">
+             <number>15</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="repeat_password_lineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(248, 248, 248);
+border-radius: 10%</string>
             </property>
            </widget>
           </item>
