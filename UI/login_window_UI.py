@@ -11,9 +11,6 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_Login_window(object):
     def setupUi(self, Login_window):
-        Login_window.setObjectName("Login_window")
-        Login_window.resize(508, 369)
-        Login_window.setStyleSheet("background-color: rgb(42, 42, 42);")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Login_window)
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Minimum)

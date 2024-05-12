@@ -11,9 +11,6 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_Authorization_window(object):
     def setupUi(self, Authorization_window):
-        Authorization_window.setObjectName("Authorization_window")
-        Authorization_window.resize(508, 369)
-        Authorization_window.setStyleSheet("background-color: rgb(42, 42, 42);")
         self.horizontalLayout = QtWidgets.QHBoxLayout(Authorization_window)
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -48,7 +45,7 @@ class Ui_Authorization_window(object):
         font.setWeight(7)
         self.register_label.setFont(font)
         self.register_label.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 63 25pt \"Yu Gothic UI Semibold\";\n"
+"font: 63 22pt \"Yu Gothic UI Semibold\";\n"
 "")
         self.register_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.register_label.setObjectName("register_label")
