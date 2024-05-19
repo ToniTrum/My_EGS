@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icon/angle-left-b.svg</file>
+    <file>icon/apps.svg</file>
+    <file>icon/bars.svg</file>
+    <file>icon/bookmark.svg</file>
+    <file>icon/book-open.svg</file>
+    <file>icon/ellipsis-v.svg</file>
+    <file>icon/search.svg</file>
+    <file>icon/setting.svg</file>
+    <file>icon/user.svg</file>
+    <file>icon/wallet.svg</file>
+  </qresource>
+</RCC>
