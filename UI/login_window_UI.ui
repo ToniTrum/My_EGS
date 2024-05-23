@@ -87,7 +87,7 @@ background-color: rgb(65, 65, 65);</string>
          </spacer>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="v_lay_of_login_wighet" stretch="0,0,0,0,0,0,0">
+         <layout class="QVBoxLayout" name="v_lay_of_login_wighet" stretch="0,0,0,0,0,0,0,0">
           <item>
            <widget class="QLabel" name="enter_label">
             <property name="minimumSize">
@@ -223,17 +223,97 @@ font: 63 25pt &quot;Yu Gothic UI Semibold&quot;;
            </widget>
           </item>
           <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
+           <layout class="QHBoxLayout" name="h_lay_of_login_button">
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::MinimumExpanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="login_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);
+border-color: rgb(222, 222, 222);
+background-color: rgb(0, 44, 166);</string>
+              </property>
+              <property name="text">
+               <string>Войти</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::MinimumExpanding</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QLabel" name="worning_label">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="sizeHint" stdset="0">
+            <property name="minimumSize">
              <size>
-              <width>20</width>
-              <height>40</height>
+              <width>0</width>
+              <height>10</height>
              </size>
             </property>
-           </spacer>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(219, 0, 0);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="indent">
+             <number>15</number>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QCommandLinkButton" name="commoand_link_to_authorization_window">
