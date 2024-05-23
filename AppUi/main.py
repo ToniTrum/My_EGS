@@ -10,7 +10,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
 
-
 if __name__ == "__main__":
     qApp = QApplication(sys.argv)
     app = MainWindow()

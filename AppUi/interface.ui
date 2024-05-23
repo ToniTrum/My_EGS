@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(50, 50, 50);</string>
+   <string notr="true">background-color: rgb(35, 38, 39);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
@@ -145,6 +145,19 @@
            </spacer>
           </item>
           <item>
+           <widget class="QComboBox" name="comboBox">
+            <property name="iconSize">
+             <size>
+              <width>40</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLineEdit" name="searchEdit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -169,7 +182,7 @@
 border-radius: 10%;
 font: 63 10pt &quot;Yu Gothic UI Semibold&quot;;
 border: 2px silid rgb(224, 229, 230);
-background-color: rgb(72, 72, 72);
+background-color: rgb(39, 43, 44);
 </string>
             </property>
             <property name="placeholderText">
@@ -271,12 +284,9 @@ background-color: rgb(72, 72, 72);
         <widget class="QWidget" name="side_menu" native="true">
          <property name="styleSheet">
           <string notr="true">
-background-color:rgb(57, 57, 57);</string>
+background-color:rgb(35, 38, 39)</string>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <property name="spacing">
-           <number>0</number>
-          </property>
+         <layout class="QGridLayout" name="gridLayout">
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -289,7 +299,7 @@ background-color:rgb(57, 57, 57);</string>
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item>
+          <item row="0" column="0">
            <widget class="QFrame" name="frame_4">
             <property name="minimumSize">
              <size>
@@ -347,6 +357,9 @@ border: 2px silid rgb(224, 229, 230);
                  <height>35</height>
                 </size>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
                <property name="autoRepeat">
                 <bool>false</bool>
                </property>
@@ -396,6 +409,9 @@ border: 2px silid rgb(224, 229, 230);
                  <height>35</height>
                 </size>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -435,6 +451,9 @@ border: 2px silid rgb(224, 229, 230);
                  <width>35</width>
                  <height>35</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
                <property name="flat">
                 <bool>true</bool>
@@ -480,6 +499,9 @@ border: 2px silid rgb(224, 229, 230);
                  <height>35</height>
                 </size>
                </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
               </widget>
              </item>
              <item>
@@ -519,6 +541,9 @@ border: 2px silid rgb(224, 229, 230);
                  <width>35</width>
                  <height>35</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
