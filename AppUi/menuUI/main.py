@@ -1,8 +1,8 @@
 
-from interface import *
-from PyQt6.QtWidgets import QMainWindow, QApplication
+from mainWhidow import *
+from PyQt6.QtWidgets import QWidget, QApplication
 import sys
-class MainWindow(QMainWindow, Ui_MainWindow):
+class MainWindow(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
 
