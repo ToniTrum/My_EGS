@@ -1,5 +1,6 @@
 from UI.login_window_UI import Ui_Login_window
 from UI.authorization_window_UI import Ui_authorization_window
+from AppUi.mainWhidow import Ui_Form
 from UI.main_window import Ui_main_window
 from PyQt6.QtWidgets import QWidget, QCommandLinkButton, QPushButton, QLabel, QLineEdit
 import sqlite3
@@ -15,7 +16,7 @@ class RegisterWindow(QWidget, Ui_main_window):
 
         self.ui_login_window = Ui_Login_window()
         self.ui_authorization_window = Ui_authorization_window()
-        self.ui_main_menu_window = Ui_MainMenuWindow()
+        self.ui_main_menu_window = Ui_Form()
 
         self.login_window = QWidget()
         self.authorization_window = QWidget()
