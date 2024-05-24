@@ -1,6 +1,5 @@
 from UI.login_window_UI import Ui_Login_window
 from UI.authorization_window_UI import Ui_authorization_window
-from AppUi.main_menu_window_UI import Ui_MainMenuWindow
 from UI.main_window import Ui_main_window
 from PyQt6.QtWidgets import QWidget, QCommandLinkButton, QPushButton, QLabel, QLineEdit
 import sqlite3
