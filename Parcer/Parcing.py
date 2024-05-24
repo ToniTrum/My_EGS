@@ -11,6 +11,7 @@ response = requests.get(url, headers=headers)
 
 while not response.ok:
     response = requests.get(url, headers=headers)
+    print(response.ok)
 
 with open('index.html', 'w', encoding='utf-8') as file:
     file.write(response.text)
@@ -22,16 +23,18 @@ soup = BeautifulSoup(src, 'lxml')
 pagination = soup.find("ul", class_="css-dr37qy").find_all("li", class_="css-12lid1g")
 max_pagination = int(pagination[-2].text)
 
+con = sqlite3.connect("../Data_bases/GamesList.db")
+cur = con.cursor()
+
+gameID = 1
 for page in range(max_pagination):
+    url = f"https://store.epicgames.com/ru/browse?sortBy=relevancy&sortDir=DESC&category=Game&count=40&start={page *40}"
     game_list = None
     while not game_list:
-        url = f"https://store.epicgames.com/ru/browse?sortBy=relevancy&sortDir=DESC&category=Game&count=40&start={page * 40}"
-        response = requests.get(
-            url=url,
-            headers=headers)
+        response = requests.get(url=url, headers=headers)
         soup = BeautifulSoup(response.text, 'lxml')
-
         game_list = soup.find_all("li", class_="css-lrwy1y")
+
     c = 1
     for game in game_list:
         if game == game_list[0] and c > 1:
@@ -44,34 +47,51 @@ for page in range(max_pagination):
             image = None
         title = game.find("span", class_="css-119zqif").text
 
+        response = requests.get(url=game_link, headers=headers)
+        while not response.ok:
+            response = requests.get(url=game_link, headers=headers)
+
+        soup = BeautifulSoup(response.text, 'lxml')
         try:
-            price = game.find('span', class_="css-d3i3lr").text
+            price = soup.find("div", class_="css-169q7x3").find("span", class_="css-119zqif").text
         except AttributeError:
             try:
-                price = game.find("div", class_="css-u4p24i").find("span", class_="css-119zqif").text
+                price = soup.find("div", class_="css-169q7x3").find("span", class_="css-l4hmav").text
             except AttributeError:
-                response = requests.get(url=game_link, headers=headers)
-                while not response.ok:
-                    response = requests.get(url=game_link, headers=headers)
-                    soup = BeautifulSoup(response.text, 'lxml')
                 try:
-                    price = soup.find("div", class_="css-169q7x3").find("span", class_="css-119zqif").text
-                except AttributeError:
+                    table = soup.find("div", class_="css-1gmuxco").find("div", class_="css-j7qwjs").find_all("div", class_="css-15fg505")[-2]
+                    row = table.find_all("div", class_="css-10mlqmn")[-2]
+                    price = "Будет доступно " + row.find("span", class_="css-119zqif").text
+                except IndexError:
                     try:
-                        table = soup.find("div", class_="css-j7qwjs").find("div", class_="css-1ofqig9").find_all("div", class_="css-10mlqmn")
-                        for row in table:
-                            if row.find("span", class_="css-d3i3lr").text == "Доступность":
-                                price = row.find("span", class_="css-119zqif").text
-                                break
+                        table = soup.find("div", class_="css-1gmuxco").find("div", class_="css-j7qwjs").find_all("div", class_="css-15fg505")[-1]
+                        row = table.find_all("div", class_="css-10mlqmn")[-2]
+                        price = "Будет доступно " + row.find("span", class_="css-119zqif").text
                     except AttributeError:
                         price = "Скоро"
+                except AttributeError:
+                    price = "Скоро"
 
-        con = sqlite3.connect("../Data_bases/GamesList.db")
-        cur = con.cursor()
-        print(page + 1, c, title, price, image, game_link)
-        result = cur.execute("""INSERT INTO game_info(Title, Price, Image, Link)
-                                VALUES(?, ?, ?, ?) """, (title, price, image, game_link)).fetchall()
+        try:
+            genre_list = soup.find("div", class_="css-saiooq").find("div", class_="css-1kg0r30").find_all("span", class_="css-119zqif")
+        except AttributeError:
+            genre_list = soup.find("div", class_="css-3r3brs").find("div", class_="css-11fxqgy").find_all("span", class_="css-l4hmav")
+        genres = [i.text for i in genre_list]
+
+        print(page + 1, gameID, title, price, image, game_link)
+        print(genres)
+        result_for_game_info = cur.execute("""INSERT INTO Games(GameID, Title, Price, Image, Link)
+                                              VALUES(?, ?, ?, ?, ?) """,
+                                           (gameID, title, price, image, game_link)).fetchall()
+        for genre in genres:
+            genreID = cur.execute(f"""SELECT GenreID from Genres
+                                      WHERE GenreName = '{genre}'""").fetchone()
+            if genreID:
+                result_for_genre = cur.execute("""INSERT INTO GenresForGame(GameID, GenreID)
+                                                  VALUES(?, ?) """,
+                                               (gameID, genreID[0])).fetchall()
         con.commit()
-        con.close()
-
+        gameID += 1
         c += 1
+
+con.close()
