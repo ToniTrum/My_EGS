@@ -1,5 +1,6 @@
 from UI.login_window_UI import Ui_Login_window
 from UI.authorization_window_UI import Ui_authorization_window
+from AppUi.main_menu_window_UI import Ui_MainMenuWindow
 from UI.main_window import Ui_main_window
 from PyQt6.QtWidgets import QWidget, QCommandLinkButton, QPushButton, QLabel, QLineEdit
 import sqlite3
@@ -15,15 +16,19 @@ class RegisterWindow(QWidget, Ui_main_window):
 
         self.ui_login_window = Ui_Login_window()
         self.ui_authorization_window = Ui_authorization_window()
+        self.ui_main_menu_window = Ui_MainMenuWindow()
 
         self.login_window = QWidget()
         self.authorization_window = QWidget()
+        self.main_menu_window = QWidget()
 
         self.ui_login_window.setupUi(self.login_window)
         self.ui_authorization_window.setupUi(self.authorization_window)
+        self.ui_main_menu_window.setupUi(self.main_menu_window)
 
         self.stacked.addWidget(self.login_window)
         self.stacked.addWidget(self.authorization_window)
+        self.stacked.addWidget(self.main_menu_window)
 
         self.init_login_window_UI()
 
@@ -129,4 +134,4 @@ class RegisterWindow(QWidget, Ui_main_window):
         return False
 
     def init_main_menu_UI(self, user):
-        print(user)
+        self.stacked.setCurrentIndex(2)
