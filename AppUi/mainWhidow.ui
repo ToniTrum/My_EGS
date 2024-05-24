@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>676</width>
-    <height>546</height>
+    <width>669</width>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -95,7 +95,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icon.qrc">
+            <iconset resource="../OPD/My_EGS/AppUi/icon.qrc">
              <normaloff>:/icon/icon/bars.svg</normaloff>:/icon/icon/bars.svg</iconset>
            </property>
            <property name="iconSize">
@@ -211,7 +211,7 @@ background-color: rgb(39, 43, 44);
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="icon.qrc">
+            <iconset resource="../OPD/My_EGS/AppUi/icon.qrc">
              <normaloff>:/icon/icon/search.svg</normaloff>:/icon/icon/search.svg</iconset>
            </property>
            <property name="iconSize">
@@ -351,7 +351,7 @@ border: 2px silid rgb(224, 229, 230);
                <string>Профиль</string>
               </property>
               <property name="icon">
-               <iconset resource="icon.qrc">
+               <iconset resource="../OPD/My_EGS/AppUi/icon.qrc">
                 <normaloff>:/icon/icon/user.svg</normaloff>:/icon/icon/user.svg</iconset>
               </property>
               <property name="iconSize">
@@ -403,7 +403,7 @@ border: 2px silid rgb(224, 229, 230);
                <string>Библиотека</string>
               </property>
               <property name="icon">
-               <iconset resource="icon.qrc">
+               <iconset resource="../OPD/My_EGS/AppUi/icon.qrc">
                 <normaloff>:/icon/icon/book-open.svg</normaloff>:/icon/icon/book-open.svg</iconset>
               </property>
               <property name="iconSize">
@@ -446,7 +446,7 @@ border: 2px silid rgb(224, 229, 230);
                <string>Желаемое</string>
               </property>
               <property name="icon">
-               <iconset resource="icon.qrc">
+               <iconset resource="../OPD/My_EGS/AppUi/icon.qrc">
                 <normaloff>:/icon/icon/bookmark.svg</normaloff>:/icon/icon/bookmark.svg</iconset>
               </property>
               <property name="iconSize">
@@ -493,7 +493,7 @@ border: 2px silid rgb(224, 229, 230);
                <string> Кошелёк</string>
               </property>
               <property name="icon">
-               <iconset resource="icon.qrc">
+               <iconset resource="../OPD/My_EGS/AppUi/icon.qrc">
                 <normaloff>:/icon/icon/wallet.svg</normaloff>:/icon/icon/wallet.svg</iconset>
               </property>
               <property name="iconSize">
@@ -536,7 +536,7 @@ border: 2px silid rgb(224, 229, 230);
                <string>Настройки </string>
               </property>
               <property name="icon">
-               <iconset resource="icon.qrc">
+               <iconset resource="../OPD/My_EGS/AppUi/icon.qrc">
                 <normaloff>:/icon/icon/setting.svg</normaloff>:/icon/icon/setting.svg</iconset>
               </property>
               <property name="iconSize">
@@ -612,8 +612,8 @@ border: 2px silid rgb(224, 229, 230);
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>452</width>
-                 <height>390</height>
+                 <width>445</width>
+                 <height>415</height>
                 </rect>
                </property>
               </widget>
@@ -631,7 +631,7 @@ border: 2px silid rgb(224, 229, 230);
   </layout>
  </widget>
  <resources>
-  <include location="icon.qrc"/>
+  <include location="../OPD/My_EGS/AppUi/icon.qrc"/>
  </resources>
  <connections/>
 </ui>
