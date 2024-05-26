@@ -1,6 +1,6 @@
 from UI.login_window_UI import Ui_Login_window
 from UI.authorization_window_UI import Ui_authorization_window
-from AppUi.mainWhidow import Ui_Form
+from AppUi.menuUI.main_menu_window_UI import Ui_main_menu_window
 from UI.main_window import Ui_main_window
 from PyQt6.QtWidgets import QWidget, QCommandLinkButton, QPushButton, QLabel, QLineEdit
 import sqlite3
@@ -16,7 +16,7 @@ class RegisterWindow(QWidget, Ui_main_window):
 
         self.ui_login_window = Ui_Login_window()
         self.ui_authorization_window = Ui_authorization_window()
-        self.ui_main_menu_window = Ui_Form()
+        self.ui_main_menu_window = Ui_main_menu_window()
 
         self.login_window = QWidget()
         self.authorization_window = QWidget()
@@ -50,7 +50,7 @@ class RegisterWindow(QWidget, Ui_main_window):
         if result:
             if result[2] == password_lineEdit.text():
                 worning_label.setText("")
-                self.init_main_menu_UI(result[1])
+                self.go_to_main_menu_window(result[1])
             else:
                 worning_label.setText("Неверный логин или пароль")
         else:
@@ -107,7 +107,7 @@ class RegisterWindow(QWidget, Ui_main_window):
 
             if flag:
                 self.creating_new_account(login_lineEdit.text(), password_lineEdit.text())
-                self.init_main_menu_UI(login_lineEdit.text())
+                self.go_to_main_menu_window(login_lineEdit.text())
         else:
             worning_of_login_label.setText("Пользователь с таким логином уже существует")
 
@@ -133,5 +133,6 @@ class RegisterWindow(QWidget, Ui_main_window):
                 return True
         return False
 
-    def init_main_menu_UI(self, user):
+    def go_to_main_menu_window(self, user):
         self.stacked.setCurrentIndex(2)
+        self.init_main_menu_window_UI()
