@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>account_window</class>
+ <widget class="QWidget" name="account_window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -27,8 +27,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>850</width>
-        <height>681</height>
+        <width>860</width>
+        <height>691</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -42,8 +42,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>826</width>
-            <height>657</height>
+            <width>846</width>
+            <height>677</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -84,7 +84,7 @@ border-radius: 25%
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../../OPD/My_EGS/AppUi/menuUI/icon.qrc">
+                <iconset>
                  <normaloff>:/icon/icon/angle-left-b.svg</normaloff>:/icon/icon/angle-left-b.svg</iconset>
                </property>
                <property name="iconSize">
@@ -274,7 +274,7 @@ border-radius: 25%
                     <string>Баланс:</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../OPD/My_EGS/AppUi/menuUI/icon.qrc">
+                    <iconset>
                      <normaloff>:/icon/icon/wallet.svg</normaloff>:/icon/icon/wallet.svg</iconset>
                    </property>
                    <property name="iconSize">

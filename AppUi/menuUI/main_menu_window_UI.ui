@@ -508,49 +508,6 @@ border: 2px silid rgb(224, 229, 230);
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>25</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item alignment="Qt::AlignLeft">
-             <widget class="QPushButton" name="settingButton">
-              <property name="styleSheet">
-               <string notr="true">color:rgb(223, 228, 229);
-border-radius: 10%;
-font: 63 10pt &quot;Yu Gothic UI Semibold&quot;;
-border: 2px silid rgb(224, 229, 230);
-</string>
-              </property>
-              <property name="text">
-               <string>Настройки </string>
-              </property>
-              <property name="icon">
-               <iconset resource="icon.qrc">
-                <normaloff>:/icon/icon/setting.svg</normaloff>:/icon/icon/setting.svg</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>35</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="checkable">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
              <spacer name="verticalSpacer">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -604,6 +561,12 @@ border: 2px silid rgb(224, 229, 230);
            <layout class="QHBoxLayout" name="horizontalLayout_6">
             <item>
              <widget class="QScrollArea" name="scrollArea">
+              <property name="minimumSize">
+               <size>
+                <width>500</width>
+                <height>0</height>
+               </size>
+              </property>
               <property name="widgetResizable">
                <bool>true</bool>
               </property>
