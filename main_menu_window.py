@@ -33,9 +33,7 @@ class MainMenuWindow(RegisterWindow):
             for i in range(4):
                 if len(game_list):
                     info = game_list.pop(0)
-                    image = self.get_avif_from_url(info[3], info[1])
-
-                    game_button = GameButton(info[0], info[1], info[2], image, info[4])
+                    game_button = GameButton(*info)
                     game_button.image_button.clicked.connect(
                         lambda link=game_button.link: self.init_game_window_UI(link))
                     h_lay.addWidget(game_button)
@@ -59,16 +57,6 @@ class MainMenuWindow(RegisterWindow):
         if len(game_list) > 40:
             game_list = game_list[:40]
         return game_list
-
-    def get_avif_from_url(self, img_url, name):
-        if img_url != "None" and img_url:
-            name = name.replace(" ", "_").replace(":", "").replace("'", "").replace("´", "")
-            name = name.replace('"', "").replace(",", "").replace(".", "").replace("?", "")
-            name = name.replace("!", "")
-            save_path = f"Images/{name}.avif"
-            urllib.request.urlretrieve(img_url, save_path)
-            return save_path
-        return "Images/NoImage.avif"
 
     def init_game_window_UI(self, link):
         print(link)
