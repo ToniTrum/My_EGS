@@ -3,7 +3,6 @@ from AppUi.ImageButton.imageMain import GameButton
 from PyQt6.QtWidgets import QHBoxLayout, QPushButton, QVBoxLayout
 from PyQt6.QtWidgets import QInputDialog
 import sqlite3
-import urllib.request
 from math import ceil
 
 
@@ -11,8 +10,11 @@ class MainMenuWindow(RegisterWindow):
     def __init__(self):
         super().__init__()
         self.pages_count = 0
+        self.user = 0
 
-    def init_main_menu_window_UI(self):
+    def init_main_menu_window_UI(self, user):
+        self.user = user
+
         right_button = self.stacked.widget(2).findChild(QPushButton, "right_button")
         right_button.clicked.connect(self.next_page)
 
@@ -21,6 +23,15 @@ class MainMenuWindow(RegisterWindow):
 
         page_number_button = self.stacked.widget(2).findChild(QPushButton, "page_number_button")
         page_number_button.clicked.connect(self.current_page)
+
+        profile_button = self.stacked.widget(2).findChild(QPushButton, "profileButton")
+        profile_button.clicked.connect(self.go_to_account_window)
+
+        library_button = self.stacked.widget(2).findChild(QPushButton, "libraryButton")
+
+        desired_button = self.stacked.widget(2).findChild(QPushButton, "desiredButton")
+
+        wallet_button = self.stacked.widget(2).findChild(QPushButton, "walletButton")
 
         self.add_games_row()
 
@@ -108,3 +119,7 @@ class MainMenuWindow(RegisterWindow):
                 game.widget().setParent(None)
             v_lay.takeAt(1)
             row_lay.deleteLater()
+
+    def go_to_account_window(self):
+        self.stacked.setCurrentIndex(3)
+        self.init_account_window_UI()
