@@ -1,6 +1,5 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-from register_stacked_window import RegisterWindow
 from main_menu_window import MainMenuWindow
 
 
