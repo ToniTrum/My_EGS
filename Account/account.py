@@ -196,10 +196,26 @@ class Ui_account_window(object):
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Maximum)
         self.verticalLayout_4.addItem(spacerItem2)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setContentsMargins(-1, 15, -1, 15)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.change_button = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents_2)
-        self.change_button.setStyleSheet("background-color: rgb(177, 191, 197);\n"
-"font: 63 10pt \"Yu Gothic UI Semibold\";\n"
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.change_button.sizePolicy().hasHeightForWidth())
+        self.change_button.setSizePolicy(sizePolicy)
+        self.change_button.setMinimumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI Semibold")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(7)
+        self.change_button.setFont(font)
+        self.change_button.setStyleSheet("background-color: rgb(0, 44, 166);\n"
+"color: rgb(255, 255, 255);\n"
+"border-radius: 10%;\n"
+"font: 63 12pt \"Yu Gothic UI Semibold\";\n"
 "\n"
 "")
         self.change_button.setObjectName("change_button")
@@ -207,19 +223,41 @@ class Ui_account_window(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem3)
         self.verticalLayout_4.addLayout(self.horizontalLayout_6)
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_8.setContentsMargins(-1, 15, -1, 25)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        self.exit_account_button = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.exit_account_button.sizePolicy().hasHeightForWidth())
+        self.exit_account_button.setSizePolicy(sizePolicy)
+        self.exit_account_button.setMinimumSize(QtCore.QSize(120, 40))
+        self.exit_account_button.setStyleSheet("color:rgb(223, 228, 229);\n"
+"font: 63 12pt \"Yu Gothic UI Semibold\";\n"
+"background-color: rgb(51, 55, 57);\n"
+"border-radius: 10%;")
+        self.exit_account_button.setObjectName("exit_account_button")
+        self.horizontalLayout_8.addWidget(self.exit_account_button)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem4)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_8)
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_7.setContentsMargins(-1, 15, -1, 15)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.del_button = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents_2)
+        self.del_button.setMinimumSize(QtCore.QSize(120, 40))
         self.del_button.setStyleSheet("color:rgb(223, 228, 229);\n"
-"font: 63 10pt \"Yu Gothic UI Semibold\";\n"
-"background-color: rgb(198, 57, 57)\n"
+"font: 63 12pt \"Yu Gothic UI Semibold\";\n"
+"background-color: rgb(198, 57, 57);\n"
+"border-radius: 10%;\n"
 "\n"
 "\n"
 "")
         self.del_button.setObjectName("del_button")
         self.horizontalLayout_7.addWidget(self.del_button)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout_7.addItem(spacerItem4)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem5)
         self.verticalLayout_4.addLayout(self.horizontalLayout_7)
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.horizontalLayout.addWidget(self.scrollArea_2)
@@ -239,4 +277,5 @@ class Ui_account_window(object):
         self.label_2.setText(_translate("account_window", "ID:"))
         self.id_label.setText(_translate("account_window", "TextLabel"))
         self.change_button.setText(_translate("account_window", "Изменить данные"))
+        self.exit_account_button.setText(_translate("account_window", "Выйти из аккаунта"))
         self.del_button.setText(_translate("account_window", " Удалить аккаунт  "))

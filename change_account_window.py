@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QPushButton, QLabel, QLineEdit
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QFileDialog, QMessageBox
 import sqlite3
+from PIL import Image
 
 
 class ChangeAccountWindow(AccountWindow):
@@ -48,10 +49,10 @@ class ChangeAccountWindow(AccountWindow):
         if dialog.exec():
             return dialog.selectedFiles()[0]
 
-    def open_dialog(self):
+    def open_dialog(self, mess):
         message = QMessageBox(self)
         message.setIcon(QMessageBox.Icon.Information)
-        message.setText("Вы уверены, что хотитие изменить данные?")
+        message.setText(mess)
         message.setWindowTitle("Внимание")
         message.setStandardButtons(QMessageBox.StandardButton.No | QMessageBox.StandardButton.Yes)
 
@@ -63,7 +64,7 @@ class ChangeAccountWindow(AccountWindow):
     def change_account_info(self):
         flag = True
 
-        if self.open_dialog():
+        if self.open_dialog("Вы уверены, что хотитие изменить данные?"):
             warning_of_login_label = self.stacked.widget(4).findChild(QLabel, "worning_of_login_label")
             warning_of_password_label = self.stacked.widget(4).findChild(QLabel, "worning_of_password_label")
             warning_of_repeat_password_label = self.stacked.widget(4).findChild(QLabel, "worning_of_repeat_password_label")
@@ -87,6 +88,11 @@ class ChangeAccountWindow(AccountWindow):
                 warning_of_repeat_password_label.setText("")
 
             if flag:
+                image = Image.open(self.image_path)
+                extension = self.image_path.split(".")[-1]
+                self.image_path = f"Images/{self.user[0]}.{extension}"
+                image.save(self.image_path)
+
                 new_user_data = (self.user[0],
                                  self.login_lineEdit_for_change.text(),
                                  self.password_lineEdit_for_change.text(),
