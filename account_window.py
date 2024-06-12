@@ -1,6 +1,7 @@
 from main_menu_window import MainMenuWindow
 from PyQt6.QtWidgets import QLabel, QPushButton
 from PyQt6.QtGui import QPixmap
+import sqlite3
 
 
 class AccountWindow(MainMenuWindow):
@@ -18,7 +19,11 @@ class AccountWindow(MainMenuWindow):
         self.change_button = self.stacked.widget(3).findChild(QPushButton, "change_button")
         self.change_button.clicked.connect(self.go_to_change_account_window)
 
+        self.exit_account_button = self.stacked.widget(3).findChild(QPushButton, "exit_account_button")
+        self.exit_account_button.clicked.connect(self.init_login_window_UI)
+
         self.delete_account_button = self.stacked.widget(3).findChild(QPushButton, "del_button")
+        self.delete_account_button.clicked.connect(self.delete_account)
 
     def init_account_window_UI(self):
         self.login_label_for_account.setText(self.user[1])
@@ -29,3 +34,15 @@ class AccountWindow(MainMenuWindow):
     def go_to_change_account_window(self):
         self.stacked.setCurrentIndex(4)
         self.init_change_account_window_UI()
+
+    def delete_account(self):
+        if self.open_dialog("Вы уверены, что хотите удалить аккаунт?"):
+            con = sqlite3.connect("Data_bases/Users.bd")
+            cur = con.cursor()
+            result = cur.execute(f"""DELETE from users_data 
+                                     WHERE UserID = {self.user[0]}""").fetchall()
+            result = cur.execute(f"DROP TABLE [{self.user[0]}]").fetchall()
+
+            con.commit()
+            con.close()
+            self.init_login_window_UI()
