@@ -1,4 +1,4 @@
-from UI.login_window_UI import Ui_Login_window
+from Registration.login_window_UI import Ui_Login_window
 from PyQt6.QtWidgets import QWidget
 
 

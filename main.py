@@ -1,9 +1,9 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-from account_window import AccountWindow
+from change_account_window import ChangeAccountWindow
 
 
-class Window(AccountWindow):
+class Window(ChangeAccountWindow):
     def __init__(self):
         super().__init__()
 

@@ -51,7 +51,7 @@ class Ui_account_window(object):
 "")
         self.back_button.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/angle-left-b.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("Account/image/icon/angle-left-b.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.back_button.setIcon(icon)
         self.back_button.setIconSize(QtCore.QSize(40, 40))
         self.back_button.setObjectName("back_button")
@@ -141,7 +141,7 @@ class Ui_account_window(object):
 "\n"
 "")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/wallet.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("Account/image/icon/wallet.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.balance_command_link.setIcon(icon1)
         self.balance_command_link.setIconSize(QtCore.QSize(40, 40))
         self.balance_command_link.setCheckable(True)
@@ -195,33 +195,6 @@ class Ui_account_window(object):
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
         spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Maximum)
         self.verticalLayout_4.addItem(spacerItem2)
-        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.desired_button = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents_2)
-        self.desired_button.setStyleSheet("color:rgb(223, 228, 229);\n"
-"background-color: rgb(27, 30, 31);\n"
-"font: 63 10pt \"Yu Gothic UI Semibold\";\n"
-"\n"
-"")
-        self.desired_button.setObjectName("desired_button")
-        self.verticalLayout_3.addWidget(self.desired_button)
-        self.widget = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents_2)
-        self.widget.setObjectName("widget")
-        self.verticalLayout_3.addWidget(self.widget)
-        self.verticalLayout_4.addLayout(self.verticalLayout_3)
-        self.verticalLayout_5 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_5.setObjectName("verticalLayout_5")
-        self.library_button = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents_2)
-        self.library_button.setStyleSheet("color:rgb(223, 228, 229);\n"
-"font: 63 10pt \"Yu Gothic UI Semibold\";\n"
-"\n"
-"background-color: rgb(27, 30, 31);")
-        self.library_button.setObjectName("library_button")
-        self.verticalLayout_5.addWidget(self.library_button)
-        self.widget_2 = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents_2)
-        self.widget_2.setObjectName("widget_2")
-        self.verticalLayout_5.addWidget(self.widget_2)
-        self.verticalLayout_4.addLayout(self.verticalLayout_5)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.change_button = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents_2)
@@ -265,7 +238,5 @@ class Ui_account_window(object):
         self.balance_label.setText(_translate("account_window", "TextLabel"))
         self.label_2.setText(_translate("account_window", "ID:"))
         self.id_label.setText(_translate("account_window", "TextLabel"))
-        self.desired_button.setText(_translate("account_window", "СПИСОК ЖЕЛАЙМОГО"))
-        self.library_button.setText(_translate("account_window", "БИБЛИОТЕКА"))
         self.change_button.setText(_translate("account_window", "Изменить данные"))
         self.del_button.setText(_translate("account_window", " Удалить аккаунт  "))

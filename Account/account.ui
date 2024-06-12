@@ -406,47 +406,6 @@ border-radius: 25%
             </spacer>
            </item>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <item>
-              <widget class="QPushButton" name="desired_button">
-               <property name="styleSheet">
-                <string notr="true">color:rgb(223, 228, 229);
-background-color: rgb(27, 30, 31);
-font: 63 10pt &quot;Yu Gothic UI Semibold&quot;;
-
-</string>
-               </property>
-               <property name="text">
-                <string>СПИСОК ЖЕЛАЙМОГО</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QWidget" name="widget" native="true"/>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <widget class="QPushButton" name="library_button">
-               <property name="styleSheet">
-                <string notr="true">color:rgb(223, 228, 229);
-font: 63 10pt &quot;Yu Gothic UI Semibold&quot;;
-
-background-color: rgb(27, 30, 31);</string>
-               </property>
-               <property name="text">
-                <string>БИБЛИОТЕКА</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QWidget" name="widget_2" native="true"/>
-             </item>
-            </layout>
-           </item>
-           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_6">
              <item>
               <widget class="QPushButton" name="change_button">

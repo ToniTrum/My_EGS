@@ -10,29 +10,28 @@ class MainMenuWindow(RegisterWindow):
     def __init__(self):
         super().__init__()
         self.pages_count = 0
-        self.user = 0
 
-    def init_main_menu_window_UI(self, user):
-        self.user = user
+        self.right_button = self.stacked.widget(2).findChild(QPushButton, "right_button")
+        self.right_button.clicked.connect(self.next_page)
 
-        right_button = self.stacked.widget(2).findChild(QPushButton, "right_button")
-        right_button.clicked.connect(self.next_page)
+        self.left_button = self.stacked.widget(2).findChild(QPushButton, "left_button")
+        self.left_button.clicked.connect(self.prev_page)
 
-        left_button = self.stacked.widget(2).findChild(QPushButton, "left_button")
-        left_button.clicked.connect(self.prev_page)
+        self.page_number_button = self.stacked.widget(2).findChild(QPushButton, "page_number_button")
+        self.page_number_button.clicked.connect(self.current_page)
 
-        page_number_button = self.stacked.widget(2).findChild(QPushButton, "page_number_button")
-        page_number_button.clicked.connect(self.current_page)
+        self.profile_button = self.stacked.widget(2).findChild(QPushButton, "profileButton")
+        self.profile_button.clicked.connect(self.go_to_account_window)
 
-        profile_button = self.stacked.widget(2).findChild(QPushButton, "profileButton")
-        profile_button.clicked.connect(self.go_to_account_window)
+        self.library_button = self.stacked.widget(2).findChild(QPushButton, "libraryButton")
 
-        library_button = self.stacked.widget(2).findChild(QPushButton, "libraryButton")
+        self.desired_button = self.stacked.widget(2).findChild(QPushButton, "desiredButton")
 
-        desired_button = self.stacked.widget(2).findChild(QPushButton, "desiredButton")
+        self.wallet_button = self.stacked.widget(2).findChild(QPushButton, "walletButton")
 
-        wallet_button = self.stacked.widget(2).findChild(QPushButton, "walletButton")
-
+    def init_main_menu_window_UI(self):
+        self.stacked.setCurrentIndex(2)
+        self.clear_games()
         self.add_games_row()
 
     def add_games_row(self):
@@ -60,7 +59,7 @@ class MainMenuWindow(RegisterWindow):
         return result
 
     def select_game_list(self):
-        page_num = int(self.stacked.widget(2).findChild(QPushButton, "page_number_button").text()) - 1
+        page_num = int(self.page_number_button.text()) - 1
         game_list = self.get_game_list()
         self.pages_count = ceil(len(game_list) / 40)
         start = page_num * 40
@@ -73,18 +72,17 @@ class MainMenuWindow(RegisterWindow):
         print(link)
 
     def current_page(self):
-        page_number_button = self.stacked.widget(2).findChild(QPushButton, "page_number_button")
-        old_num = page_number_button.text()
-        self.show_dialog(page_number_button)
+        old_num = self.page_number_button.text()
+        self.show_dialog(self.page_number_button)
         try:
-            page_num = int(page_number_button.text())
+            page_num = int(self.page_number_button.text())
             if page_num > self.pages_count:
                 page_num = self.pages_count
             elif page_num < 1:
                 page_num = 1
-            self.create_new_page(page_num, page_number_button)
+            self.create_new_page(page_num)
         except ValueError:
-            page_number_button.setText(old_num)
+            self.page_number_button.setText(old_num)
 
     def show_dialog(self, page_number_button):
         text, ok = QInputDialog.getText(self, 'Input Dialog', 'Введите номер страницы:')
@@ -92,21 +90,19 @@ class MainMenuWindow(RegisterWindow):
             page_number_button.setText(str(text))
 
     def next_page(self):
-        page_number_button = self.stacked.widget(2).findChild(QPushButton, "page_number_button")
-        page_num = int(page_number_button.text()) + 1
+        page_num = int(self.page_number_button.text()) + 1
         if page_num > self.pages_count:
             page_num = 1
-        self.create_new_page(page_num, page_number_button)
+        self.create_new_page(page_num)
 
     def prev_page(self):
-        page_number_button = self.stacked.widget(2).findChild(QPushButton, "page_number_button")
-        page_num = int(page_number_button.text()) - 1
+        page_num = int(self.page_number_button.text()) - 1
         if page_num < 1:
             page_num = self.pages_count
-        self.create_new_page(page_num, page_number_button)
+        self.create_new_page(page_num)
 
-    def create_new_page(self, page_num, page_number_button):
-        page_number_button.setText(str(page_num))
+    def create_new_page(self, page_num):
+        self.page_number_button.setText(str(page_num))
         self.clear_games()
         self.add_games_row()
 
