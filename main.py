@@ -1,9 +1,10 @@
 import sys
 from PyQt6.QtWidgets import QApplication
 from change_account_window import ChangeAccountWindow
+from wallet_window import WalletWindow
 
 
-class Window(ChangeAccountWindow):
+class Window(WalletWindow):
     def __init__(self):
         super().__init__()
 
