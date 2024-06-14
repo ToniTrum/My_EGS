@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1036</width>
-    <height>759</height>
+    <width>778</width>
+    <height>325</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
-    <height>330</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -29,7 +29,7 @@
       <number>7</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="back_button">
        <property name="minimumSize">
         <size>
          <width>50</width>
@@ -48,7 +48,7 @@ border-radius: 25%
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../../UIMain/AppUi/icon.qrc">
+        <iconset>
          <normaloff>:/icon/icon/angle-left-b.svg</normaloff>:/icon/icon/angle-left-b.svg</iconset>
        </property>
        <property name="iconSize">
@@ -82,24 +82,25 @@ border-radius: 25%
      <item>
       <widget class="QScrollArea" name="scrollArea">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="minimumSize">
         <size>
-         <width>640</width>
-         <height>0</height>
+         <width>560</width>
+         <height>250</height>
         </size>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(255, 255, 255);
 font: 10pt &quot;Calibri&quot;;
+border-radius: 10%;
 </string>
        </property>
        <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAsNeeded</enum>
+        <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
        <property name="horizontalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -117,14 +118,14 @@ font: 10pt &quot;Calibri&quot;;
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-25</y>
-          <width>647</width>
-          <height>699</height>
+          <y>-255</y>
+          <width>560</width>
+          <height>510</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit">
+          <widget class="QPlainTextEdit" name="game_title_plainTextEdit">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -182,7 +183,7 @@ border-radius: 10%
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,0,0">
            <item>
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="left_photo_button">
              <property name="minimumSize">
               <size>
                <width>50</width>
@@ -202,7 +203,7 @@ border-radius: 25%
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../../../UIMain/AppUi/icon.qrc">
+              <iconset>
                <normaloff>:/icon/icon/angle-left-b.svg</normaloff>:/icon/icon/angle-left-b.svg</iconset>
              </property>
              <property name="iconSize">
@@ -214,7 +215,7 @@ border-radius: 25%
             </widget>
            </item>
            <item>
-            <widget class="QStackedWidget" name="stackedWidget">
+            <widget class="QStackedWidget" name="picture_stacked">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -223,8 +224,8 @@ border-radius: 25%
              </property>
              <property name="minimumSize">
               <size>
-               <width>240</width>
-               <height>300</height>
+               <width>340</width>
+               <height>250</height>
               </size>
              </property>
              <property name="currentIndex">
@@ -235,7 +236,7 @@ border-radius: 25%
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="right_photo_button">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -260,7 +261,7 @@ border-radius: 25%
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="../../../UIMain/AppUi/icon.qrc">
+              <iconset>
                <normaloff>:/icon/icon/right-arrow.svg</normaloff>:/icon/icon/right-arrow.svg</iconset>
              </property>
              <property name="iconSize">
@@ -290,10 +291,10 @@ border-radius: 25%
           </spacer>
          </item>
          <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit_2">
+          <widget class="QPlainTextEdit" name="annotation_plainTextEdit">
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 255, 255);
-font: 10pt &quot;Calibri&quot;;
+font: 12pt &quot;Calibri&quot;;
 border-color: rgb(35, 38, 39);
 border-radius: 10%
 </string>
@@ -377,10 +378,10 @@ font: 63 12pt &quot;Yu Gothic UI Semibold&quot;;</string>
           </widget>
          </item>
          <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit_3">
+          <widget class="QPlainTextEdit" name="genres_plainTextEdit">
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 255, 255);
-font: 10pt &quot;Calibri&quot;;
+font: 12pt &quot;Calibri&quot;;
 border-color: rgb(35, 38, 39);
 border-radius: 10%
 </string>
@@ -432,10 +433,10 @@ border-radius: 10%
           </spacer>
          </item>
          <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit_4">
+          <widget class="QPlainTextEdit" name="content_plainTextEdit">
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 255, 255);
-font: 10pt &quot;Calibri&quot;;
+font: 12pt &quot;Calibri&quot;;
 border-color: rgb(35, 38, 39);
 border-radius: 10%
 </string>
@@ -462,9 +463,12 @@ border-radius: 10%
       <widget class="QScrollArea" name="scrollArea_2">
        <property name="minimumSize">
         <size>
-         <width>320</width>
+         <width>200</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10%;</string>
        </property>
        <property name="verticalScrollBarPolicy">
         <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -483,13 +487,13 @@ border-radius: 10%
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>333</width>
-          <height>674</height>
+          <width>200</width>
+          <height>255</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="picture_label">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -499,7 +503,7 @@ border-radius: 10%
            <property name="minimumSize">
             <size>
              <width>170</width>
-             <height>0</height>
+             <height>100</height>
             </size>
            </property>
            <property name="text">
@@ -508,7 +512,7 @@ border-radius: 10%
           </widget>
          </item>
          <item>
-          <widget class="QPlainTextEdit" name="plainTextEdit_5">
+          <widget class="QPlainTextEdit" name="other_info_plainTextEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -551,7 +555,7 @@ border-radius: 10%
             <number>8</number>
            </property>
            <item>
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="buy_button">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -572,7 +576,8 @@ border-radius: 10%
              </property>
              <property name="styleSheet">
               <string notr="true">border-radius: 10%;
-background-color: rgb(51, 55, 57);</string>
+background-color: rgb(0, 44, 166);
+color: rgb(255, 255, 255);</string>
              </property>
              <property name="text">
               <string>PushButton</string>
@@ -590,7 +595,7 @@ background-color: rgb(51, 55, 57);</string>
             <number>8</number>
            </property>
            <item>
-            <widget class="QPushButton" name="pushButton_5">
+            <widget class="QPushButton" name="add_to_wishlist_pushButton">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -611,7 +616,8 @@ background-color: rgb(51, 55, 57);</string>
              </property>
              <property name="styleSheet">
               <string notr="true">border-radius: 10%;
-background-color: rgb(51, 55, 57);</string>
+background-color: rgb(0, 44, 166);
+color: rgb(255, 255, 255);</string>
              </property>
              <property name="text">
               <string>PushButton</string>
@@ -619,6 +625,25 @@ background-color: rgb(51, 55, 57);</string>
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="v_lay_of_table"/>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Maximum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>

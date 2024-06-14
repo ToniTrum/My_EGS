@@ -1,5 +1,6 @@
 from register_stacked_window import RegisterWindow
 from AppUi.ImageButton.imageMain import GameButton
+from GamePage.game_page_window import GamePageWindow
 from PyQt6.QtWidgets import QHBoxLayout, QPushButton, QVBoxLayout
 from PyQt6.QtWidgets import QInputDialog
 import sqlite3
@@ -29,8 +30,10 @@ class MainMenuWindow(RegisterWindow):
 
         self.wallet_button = self.stacked.widget(2).findChild(QPushButton, "walletButton")
 
-    def init_main_menu_window_UI(self):
+    def init_main_menu_window_UI(self, delete_widget=False):
         self.stacked.setCurrentIndex(2)
+        if delete_widget:
+            self.stacked.removeWidget(self.stacked.widget(self.stacked.count() - 1))
         self.clear_games()
         self.add_games_row()
 
@@ -45,7 +48,7 @@ class MainMenuWindow(RegisterWindow):
                     info = game_list.pop(0)
                     game_button = GameButton(*info)
                     game_button.image_button.clicked.connect(
-                        lambda link=game_button.link: self.init_game_window_UI(link))
+                        lambda _, game_id=game_button.game_id: self.init_game_page_window_UI(game_id))
                     h_lay.addWidget(game_button)
                 else:
                     break
@@ -68,8 +71,10 @@ class MainMenuWindow(RegisterWindow):
             game_list = game_list[:40]
         return game_list
 
-    def init_game_window_UI(self, link):
-        print(link)
+    def init_game_page_window_UI(self, game_id):
+        game_page = GamePageWindow(game_id, self)
+        self.stacked.addWidget(game_page)
+        self.stacked.setCurrentIndex(self.stacked.count() - 1)
 
     def current_page(self):
         old_num = self.page_number_button.text()
