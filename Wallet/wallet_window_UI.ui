@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>wallet_window</class>
+ <widget class="QWidget" name="wallet_window">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -20,7 +20,7 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
-      <widget class="QPushButton" name="pushButton_5">
+      <widget class="QPushButton" name="back_button">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -54,7 +54,7 @@ border-radius: 25%
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../OPD/My_EGS/AppUi/menuUI/icon.qrc">
+        <iconset>
          <normaloff>:/icon/icon/angle-left-b.svg</normaloff>:/icon/icon/angle-left-b.svg</iconset>
        </property>
        <property name="iconSize">
@@ -79,7 +79,7 @@ border-radius: 25%
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QPushButton" name="pay_button">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -101,10 +101,7 @@ font: 63 20pt &quot;Yu Gothic UI Semibold&quot;;
 </string>
        </property>
        <property name="text">
-        <string>Пополните баланс </string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <string>Пополнить баланс</string>
        </property>
       </widget>
      </item>

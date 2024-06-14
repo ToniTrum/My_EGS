@@ -29,6 +29,7 @@ class MainMenuWindow(RegisterWindow):
         self.desired_button = self.stacked.widget(2).findChild(QPushButton, "desiredButton")
 
         self.wallet_button = self.stacked.widget(2).findChild(QPushButton, "walletButton")
+        self.wallet_button.clicked.connect(self.go_to_wallet_window)
 
     def init_main_menu_window_UI(self, delete_widget=False):
         self.stacked.setCurrentIndex(2)
@@ -124,3 +125,7 @@ class MainMenuWindow(RegisterWindow):
     def go_to_account_window(self):
         self.stacked.setCurrentIndex(3)
         self.init_account_window_UI()
+
+    def go_to_wallet_window(self):
+        self.stacked.setCurrentIndex(5)
+        self.init_wallet_window_UI()

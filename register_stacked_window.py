@@ -2,6 +2,7 @@ from Registration.login_window_UI import Ui_Login_window
 from Registration.authorization_window_UI import Ui_authorization_window
 from AppUi.menuUI.main_menu_window_UI import Ui_main_menu_window
 from Account.change_account_window_UI import Ui_change_account_window
+from Wallet.wallet_window_UI import Ui_wallet_window
 from Registration.main_window import Ui_main_window
 from Account.account import Ui_account_window
 from PyQt6.QtWidgets import QWidget, QCommandLinkButton, QPushButton, QLabel, QLineEdit
@@ -23,24 +24,28 @@ class RegisterWindow(QWidget, Ui_main_window):
         self.ui_main_menu_window = Ui_main_menu_window()
         self.ui_account_window = Ui_account_window()
         self.ui_change_account_window = Ui_change_account_window()
+        self.ui_wallet_window = Ui_wallet_window()
 
         self.login_window = QWidget()
         self.authorization_window = QWidget()
         self.main_menu_window = QWidget()
         self.account_window = QWidget()
         self.change_account_window = QWidget()
+        self.wallet_window = QWidget()
 
         self.ui_login_window.setupUi(self.login_window)
         self.ui_authorization_window.setupUi(self.authorization_window)
         self.ui_main_menu_window.setupUi(self.main_menu_window)
         self.ui_account_window.setupUi(self.account_window)
         self.ui_change_account_window.setupUi(self.change_account_window)
+        self.ui_wallet_window.setupUi(self.wallet_window)
 
         self.stacked.addWidget(self.login_window)           # 0
         self.stacked.addWidget(self.authorization_window)   # 1
         self.stacked.addWidget(self.main_menu_window)       # 2
         self.stacked.addWidget(self.account_window)         # 3
         self.stacked.addWidget(self.change_account_window)  # 4
+        self.stacked.addWidget(self.wallet_window)          # 5
 
         self.init_login_window_UI()
 
