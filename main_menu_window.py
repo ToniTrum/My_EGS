@@ -1,7 +1,7 @@
 from register_stacked_window import RegisterWindow
 from AppUi.ImageButton.imageMain import GameButton
 from GamePage.game_page_window import GamePageWindow
-from PyQt6.QtWidgets import QHBoxLayout, QPushButton, QVBoxLayout
+from PyQt6.QtWidgets import QHBoxLayout, QPushButton, QVBoxLayout, QLabel, QLineEdit
 from PyQt6.QtWidgets import QInputDialog
 import sqlite3
 from math import ceil
@@ -11,6 +11,9 @@ class MainMenuWindow(RegisterWindow):
     def __init__(self):
         super().__init__()
         self.pages_count = 0
+
+        self.loctation_label = self.stacked.widget(2).findChild(QLabel, "loctation_label")
+        self.searchEdit = self.stacked.widget(2).findChild(QLineEdit, "searchEdit")
 
         self.right_button = self.stacked.widget(2).findChild(QPushButton, "right_button")
         self.right_button.clicked.connect(self.next_page)
@@ -25,14 +28,20 @@ class MainMenuWindow(RegisterWindow):
         self.profile_button.clicked.connect(self.go_to_account_window)
 
         self.library_button = self.stacked.widget(2).findChild(QPushButton, "libraryButton")
+        self.library_button.clicked.connect(lambda: self.build_library(1))
 
         self.desired_button = self.stacked.widget(2).findChild(QPushButton, "desiredButton")
+        self.desired_button.clicked.connect(lambda: self.build_library(0))
 
         self.wallet_button = self.stacked.widget(2).findChild(QPushButton, "walletButton")
         self.wallet_button.clicked.connect(self.go_to_wallet_window)
 
+        self.searchButton = self.stacked.widget(2).findChild(QPushButton, "searchButton")
+        self.searchButton.clicked.connect(self.filtration)
+
     def init_main_menu_window_UI(self, delete_widget=False):
         self.stacked.setCurrentIndex(2)
+        self.loctation_label.setText("Главное меню")
         if delete_widget:
             self.stacked.removeWidget(self.stacked.widget(self.stacked.count() - 1))
         self.clear_games()
@@ -129,3 +138,40 @@ class MainMenuWindow(RegisterWindow):
     def go_to_wallet_window(self):
         self.stacked.setCurrentIndex(5)
         self.init_wallet_window_UI()
+
+    def build_library(self, value):
+        self.clear_games()
+        self.loctation_label.setText("Библиотека")
+
+        con = sqlite3.connect("Data_bases/Users.bd")
+        cur = con.cursor()
+        result = cur.execute(f"""SELECT GameID from u{self.user[0]}
+                                 WHERE InLib = {value}""").fetchall()
+        con.close()
+
+        con = sqlite3.connect("Data_bases/GamesList.db")
+        cur = con.cursor()
+
+        game_list = []
+        for game_id in result:
+            game_data = cur.execute(f"""SELECT * from GamesInfo
+                                        WHERE GameID = {game_id[0]}""").fetchone()
+            game_list.append(game_data)
+
+        v_lay = self.stacked.widget(2).findChild(QVBoxLayout, "verticalLayout_4")
+
+        for game in range(ceil(len(game_list) / 4)):
+            h_lay = QHBoxLayout()
+            for i in range(4):
+                if len(game_list):
+                    info = game_list.pop(0)
+                    game_button = GameButton(*info)
+                    game_button.image_button.clicked.connect(
+                        lambda _, game_id=game_button.game_id: self.init_game_page_window_UI(game_id))
+                    h_lay.addWidget(game_button)
+                else:
+                    break
+            v_lay.addLayout(h_lay)
+
+    def filtration(self):
+        pass
