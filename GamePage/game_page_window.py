@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QWidget, QPushButton, QPlainTextEdit, QStackedWidget
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt, QSize
 from GamePage.game_page_UI import Ui_game_page
+from GamePage.table_row import TableRow
 import urllib.request
 from bs4 import BeautifulSoup
 import sqlite3
@@ -78,6 +79,7 @@ class GamePageWindow(QWidget):
         soup = BeautifulSoup(src, 'lxml')
         self.set_screenshots(soup)
         self.add_text_content(soup)
+        self.add_right_game_card(soup)
 
     def set_screenshots(self, soup):
         screenshots = soup.find_all("div", class_="css-5emn3v")
@@ -122,6 +124,47 @@ class GamePageWindow(QWidget):
         self.content_plainTextEdit.setPlainText(text)
         self.content_plainTextEdit.setMinimumHeight(
             int(self.content_plainTextEdit.size().width() * size / 10) + end_lines * 30)
+
+    def add_right_game_card(self, soup):
+        card = soup.find("div", class_="css-1gmuxco")
+        if card is None:
+            card = soup.find("div", class_="css-pfnsbm")
+
+        self.set_game_icon(card)
+        self.set_table_info(card)
+        self.set_other_information(card)
+
+    def set_game_icon(self, card):
+        icon_url = card.find("div", class_="css-uwwqev").find("img").get("src")
+        urllib.request.urlretrieve(icon_url, "GamePage/buffer_img.png")
+        pixmap = QPixmap("GamePage/buffer_img.png")
+        scaling_size = (self.picture_label.size().width(),
+                        int((self.picture_label.size().width() * pixmap.size().height()) / pixmap.size().width()))
+        pixmap = pixmap.scaled(QSize(*scaling_size), Qt.AspectRatioMode.KeepAspectRatio)
+        self.picture_label.setPixmap(pixmap)
+        self.picture_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+    def set_table_info(self, card):
+        exceptions = ["Вознаграждения Epic", "Тип возврата", "Платформа"]
+
+        rows = card.find_all("div", class_="css-10mlqmn")
+        for row in rows:
+            table_row = row.find("div", class_="css-1o0y1dn")
+            head = table_row.find("span", class_="css-d3i3lr")
+            if head.text not in exceptions:
+                header = head.text
+                value = table_row.find("span", class_="css-119zqif").text
+                table_row_widget = TableRow(header, value)
+                self.v_lay_of_table.addWidget(table_row_widget)
+
+    def set_other_information(self, card):
+        info = card.find("div", class_="css-1mdcw0h")
+        if info:
+            text = ""
+            tags = info.find_all("div", class_="css-u4p24i")
+            for tag in tags:
+                text += (tag.text + "\t")
+        self.other_info_plainTextEdit.setPlainText(text)
 
     def go_to_back(self):
         self.prev.init_main_menu_window_UI(True)
