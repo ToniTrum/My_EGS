@@ -34,17 +34,6 @@ class Ui_main_menu_window(object):
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.menuButton = QtWidgets.QPushButton(parent=self.frame)
-        self.menuButton.setMinimumSize(QtCore.QSize(0, 30))
-        self.menuButton.setMaximumSize(QtCore.QSize(16777215, 30))
-        self.menuButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/bars.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.menuButton.setIcon(icon)
-        self.menuButton.setIconSize(QtCore.QSize(40, 40))
-        self.menuButton.setFlat(True)
-        self.menuButton.setObjectName("menuButton")
-        self.horizontalLayout_3.addWidget(self.menuButton)
         self.horizontalLayout_2.addWidget(self.frame, 0, QtCore.Qt.AlignmentFlag.AlignLeft)
         self.frame_3 = QtWidgets.QFrame(parent=self.header)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Preferred)
@@ -57,6 +46,15 @@ class Ui_main_menu_window(object):
         self.frame_3.setObjectName("frame_3")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame_3)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.loctation_label = QtWidgets.QLabel(parent=self.frame_3)
+        self.loctation_label.setStyleSheet("color:rgb(223, 228, 229);\n"
+"\n"
+"border-radius: 10%;\n"
+"font: 63 15pt \"Yu Gothic UI Semibold\";\n"
+"border: 2px silid rgb(224, 229, 230);\n"
+"")
+        self.loctation_label.setObjectName("loctation_label")
+        self.horizontalLayout_4.addWidget(self.loctation_label)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_4.addItem(spacerItem)
         self.filterButton = QtWidgets.QPushButton(parent=self.frame_3)
@@ -92,9 +90,9 @@ class Ui_main_menu_window(object):
         self.searchButton.setSizePolicy(sizePolicy)
         self.searchButton.setMinimumSize(QtCore.QSize(5, 0))
         self.searchButton.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/search.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.searchButton.setIcon(icon1)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/search.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.searchButton.setIcon(icon)
         self.searchButton.setIconSize(QtCore.QSize(35, 35))
         self.searchButton.setCheckable(False)
         self.searchButton.setChecked(False)
@@ -141,9 +139,9 @@ class Ui_main_menu_window(object):
 "font: 63 10pt \"Yu Gothic UI Semibold\";\n"
 "border: 2px silid rgb(224, 229, 230);\n"
 "")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/user.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.profileButton.setIcon(icon2)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/user.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.profileButton.setIcon(icon1)
         self.profileButton.setIconSize(QtCore.QSize(35, 35))
         self.profileButton.setCheckable(True)
         self.profileButton.setAutoRepeat(False)
@@ -159,9 +157,9 @@ class Ui_main_menu_window(object):
 "font: 63 10pt \"Yu Gothic UI Semibold\";\n"
 "border: 2px silid rgb(224, 229, 230);\n"
 "")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/book-open.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.libraryButton.setIcon(icon3)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/book-open.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.libraryButton.setIcon(icon2)
         self.libraryButton.setIconSize(QtCore.QSize(35, 35))
         self.libraryButton.setCheckable(True)
         self.libraryButton.setObjectName("libraryButton")
@@ -174,9 +172,9 @@ class Ui_main_menu_window(object):
 "font: 63 10pt \"Yu Gothic UI Semibold\";\n"
 "border: 2px silid rgb(224, 229, 230);\n"
 "")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/bookmark.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.desiredButton.setIcon(icon4)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/bookmark.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.desiredButton.setIcon(icon3)
         self.desiredButton.setIconSize(QtCore.QSize(35, 35))
         self.desiredButton.setCheckable(True)
         self.desiredButton.setFlat(True)
@@ -191,9 +189,9 @@ class Ui_main_menu_window(object):
 "border: 2px silid rgb(224, 229, 230);\n"
 "\n"
 "")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/wallet.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.walletButton.setIcon(icon5)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/wallet.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.walletButton.setIcon(icon4)
         self.walletButton.setIconSize(QtCore.QSize(35, 35))
         self.walletButton.setCheckable(True)
         self.walletButton.setObjectName("walletButton")
@@ -241,9 +239,9 @@ class Ui_main_menu_window(object):
         self.left_button.setStyleSheet("color:rgb(223, 228, 229);\n"
 "font: 63 8pt \"Yu Gothic UI Semibold\";")
         self.left_button.setText("")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/angle-left-b.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.left_button.setIcon(icon6)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/angle-left-b.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.left_button.setIcon(icon5)
         self.left_button.setObjectName("left_button")
         self.horizontalLayout_7.addWidget(self.left_button)
         self.page_number_button = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents)
@@ -262,9 +260,9 @@ class Ui_main_menu_window(object):
         self.right_button.setStyleSheet("color:rgb(223, 228, 229);\n"
 "font: 63 8pt \"Yu Gothic UI Semibold\";")
         self.right_button.setText("")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/right-arrow.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.right_button.setIcon(icon7)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("AppUi/menuUI/icon/right-arrow.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.right_button.setIcon(icon6)
         self.right_button.setObjectName("right_button")
         self.horizontalLayout_7.addWidget(self.right_button)
         spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -282,6 +280,7 @@ class Ui_main_menu_window(object):
     def retranslateUi(self, main_menu_window):
         _translate = QtCore.QCoreApplication.translate
         main_menu_window.setWindowTitle(_translate("main_menu_window", "Form"))
+        self.loctation_label.setText(_translate("main_menu_window", "TextLabel"))
         self.filterButton.setText(_translate("main_menu_window", "Фильтр"))
         self.searchEdit.setPlaceholderText(_translate("main_menu_window", "   Поиск "))
         self.profileButton.setText(_translate("main_menu_window", "Профиль"))
