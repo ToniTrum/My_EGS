@@ -131,9 +131,9 @@ class RegisterWindow(QWidget, Ui_main_window):
 
         user_id = cur.execute(f"""SELECT UserID from users_data
                                   WHERE login = '{login}'""").fetchone()
-        result = cur.execute(f"""CREATE TABLE [{user_id[0]}] (
-                                 GameID INTEGER PRIMARY KEY
-                                 );""")
+        result = cur.execute(f"""CREATE TABLE 'u{user_id[0]}' (
+                                 GameId INTEGER PRIMARY KEY,
+                                 InLib  INTEGER);""")
         con.commit()
         con.close()
 

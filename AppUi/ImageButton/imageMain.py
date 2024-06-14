@@ -3,13 +3,13 @@ from PyQt6.QtWidgets import QWidget
 
 
 class GameButton(QWidget, Ui_game_button):
-    def __init__(self, gameID, title, price, image, link):
+    def __init__(self, game_id, title, price, image, link):
         super().__init__()
         self.title = title
         self.price = price
         self.image = image
         self.link = link
-        self.gameID = gameID
+        self.game_id = game_id
 
         self.setupUi(self)
         self.initUI()
