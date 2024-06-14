@@ -41,6 +41,8 @@ class GamePageWindow(QWidget):
         self.get_information_from_db()
 
         self.back_button.clicked.connect(self.go_to_back)
+        self.left_photo_button.clicked.connect(self.left_page)
+        self.right_photo_button.clicked.connect(self.right_page)
 
     def get_information_from_db(self):
         game_info = self.get_information_from_games_db()
@@ -55,6 +57,22 @@ class GamePageWindow(QWidget):
                 self.add_to_wishlist_pushButton.setText("Приобретено")
             else:
                 self.add_to_wishlist_pushButton.setText("Убрать из списка")
+                self.add_to_wishlist_pushButton.clicked.connect(self.delete_from_wishlist)
+        else:
+            self.add_to_wishlist_pushButton.setText("Добавить в желаемое")
+            self.add_to_wishlist_pushButton.clicked.connect(self.add_to_wishlist)
+
+            if "RUB" in game_info[2] or "₽" in game_info[2]:
+                self.buy_button.setText(game_info[2])
+                self.buy_button.clicked.connect(self.buy_game)
+            else:
+                self.buy_button.setText("Скоро")
+
+        genres = self.get_information_from_genres_db()
+        text = ""
+        for genre in genres:
+            text += (genre[0] + ",   ")
+        self.genres_plainTextEdit.setPlainText(text)
 
     def get_information_from_wishlist_db(self):
         con = sqlite3.connect("Data_bases/Users.bd")
@@ -69,6 +87,17 @@ class GamePageWindow(QWidget):
         cur = con.cursor()
         result = cur.execute(f"""SELECT * from GamesInfo
                                  WHERE GameID = {self.game_id}""").fetchone()
+        con.close()
+        return result
+
+    def get_information_from_genres_db(self):
+        con = sqlite3.connect("Data_bases/GamesList.db")
+        cur = con.cursor()
+        result = cur.execute(f"""SELECT
+                                 Genres.GenreName
+                                 FROM GenresForGame
+                                 INNER JOIN Genres ON Genres.GenreID = GenresForGame.GenreID
+                                 WHERE GenresForGame.GameID = {self.game_id}""").fetchall()
         con.close()
         return result
 
@@ -114,6 +143,8 @@ class GamePageWindow(QWidget):
         self.annotation_plainTextEdit.setMinimumHeight(120)
 
         content = soup.find("div", class_="css-1lwib6p")
+        if content is None:
+            content = soup.find("div", class_="css-1u6j54o")
         text = ""
         end_lines = 0
         for elem in content:
@@ -163,8 +194,47 @@ class GamePageWindow(QWidget):
             text = ""
             tags = info.find_all("div", class_="css-u4p24i")
             for tag in tags:
-                text += (tag.text + "\t")
+                text += (tag.text + "   ")
         self.other_info_plainTextEdit.setPlainText(text)
+
+    def add_to_wishlist(self):
+        con = sqlite3.connect("Data_bases/Users.bd")
+        cur = con.cursor()
+
+        result = cur.execute(f"""INSERT INTO u{self.prev.user[0]}(GameID, InLib)
+                                 VALUES({self.game_id}, 0)""").fetchall()
+        self.add_to_wishlist_pushButton.setText("Убрать из списка")
+        self.add_to_wishlist_pushButton.clicked.connect(self.delete_from_wishlist)
+
+        con.commit()
+        con.close()
+
+    def delete_from_wishlist(self):
+        con = sqlite3.connect("Data_bases/Users.bd")
+        cur = con.cursor()
+
+        result = cur.execute(f"""DELETE from u{self.prev.user[0]}
+                                             WHERE GameID = {self.game_id}""").fetchall()
+        self.add_to_wishlist_pushButton.setText("Добавить в желаемое")
+        self.add_to_wishlist_pushButton.clicked.connect(self.add_to_wishlist)
+
+        con.commit()
+        con.close()
+
+    def buy_game(self):
+        pass
+
+    def left_page(self):
+        if self.picture_stacked.currentIndex() > 0:
+            self.picture_stacked.setCurrentIndex(self.picture_stacked.currentIndex() - 1)
+        else:
+            self.picture_stacked.setCurrentIndex(self.picture_stacked.count() - 1)
+
+    def right_page(self):
+        if self.picture_stacked.currentIndex() < self.picture_stacked.count() - 1:
+            self.picture_stacked.setCurrentIndex(self.picture_stacked.currentIndex() + 1)
+        else:
+            self.picture_stacked.setCurrentIndex(0)
 
     def go_to_back(self):
         self.prev.init_main_menu_window_UI(True)
