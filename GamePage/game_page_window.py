@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QPushButton, QPlainTextEdit, QStackedWidget, QLabel, QVBoxLayout, QHBoxLayout
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtWidgets import QMessageBox
 from GamePage.game_page_UI import Ui_game_page
 from GamePage.table_row import TableRow
 import urllib.request
@@ -58,12 +59,22 @@ class GamePageWindow(QWidget):
             else:
                 self.add_to_wishlist_pushButton.setText("Убрать из списка")
                 self.add_to_wishlist_pushButton.clicked.connect(self.delete_from_wishlist)
+
+                if "RUB" in game_info[2] or "₽" in game_info[2]:
+                    self.buy_button.setText(game_info[2])
+                    self.buy_button.clicked.connect(self.buy_game)
+                elif game_info[2] == "Бесплатно":
+                    self.buy_button.setText("0")
+                    self.buy_button.clicked.connect(self.buy_game)
         else:
             self.add_to_wishlist_pushButton.setText("Добавить в желаемое")
             self.add_to_wishlist_pushButton.clicked.connect(self.add_to_wishlist)
 
             if "RUB" in game_info[2] or "₽" in game_info[2]:
                 self.buy_button.setText(game_info[2])
+                self.buy_button.clicked.connect(self.buy_game)
+            elif game_info[2] == "Бесплатно":
+                self.buy_button.setText("0")
                 self.buy_button.clicked.connect(self.buy_game)
             else:
                 self.buy_button.setText("Скоро")
@@ -214,7 +225,7 @@ class GamePageWindow(QWidget):
         cur = con.cursor()
 
         result = cur.execute(f"""DELETE from u{self.prev.user[0]}
-                                             WHERE GameID = {self.game_id}""").fetchall()
+                                 WHERE GameID = {self.game_id}""").fetchall()
         self.add_to_wishlist_pushButton.setText("Добавить в желаемое")
         self.add_to_wishlist_pushButton.clicked.connect(self.add_to_wishlist)
 
@@ -222,7 +233,42 @@ class GamePageWindow(QWidget):
         con.close()
 
     def buy_game(self):
-        pass
+        price = float(self.buy_button.text().replace(" ", "").replace("RUB", "").replace("₽", ""))
+        if self.prev.user[3] < price:
+            self.prev.open_dialog("У Вас недостаточно средств")
+        else:
+            if self.prev.open_dialog("Вы уверены, что хотите совершить покупку?"):
+                self.buy_button.setText("Приобретено")
+                self.buy_button.clicked.connect(self.void)
+
+                self.add_to_wishlist_pushButton.setText("Приобретено")
+                self.add_to_wishlist_pushButton.clicked.connect(self.void)
+
+                new_data = [self.prev.user[0],
+                            self.prev.user[1],
+                            self.prev.user[2],
+                            self.prev.user[3] - price,
+                            self.prev.user[4]]
+                self.prev.user = new_data
+
+                con = sqlite3.connect("Data_bases/Users.bd")
+                cur = con.cursor()
+
+                result = cur.execute(f"""UPDATE users_data
+                                         SET Balance = {self.prev.user[3]}
+                                         WHERE UserID = {self.prev.user[0]}""").fetchall()
+
+                result = cur.execute(f"""SELECT GameID from u{self.prev.user[0]}
+                                         WHERE GameID = {self.game_id}""").fetchone()
+                if result:
+                    result = cur.execute(f"""DELETE from u{self.prev.user[0]}
+                                             WHERE GameID = {self.game_id}""").fetchall()
+
+                result = cur.execute(f"""INSERT INTO u{self.prev.user[0]}(GameID, InLib)
+                                         VALUES({self.game_id}, 1)""").fetchall()
+
+                con.commit()
+                con.close()
 
     def left_page(self):
         if self.picture_stacked.currentIndex() > 0:
@@ -238,3 +284,6 @@ class GamePageWindow(QWidget):
 
     def go_to_back(self):
         self.prev.init_main_menu_window_UI(True)
+
+    def void(self):
+        pass

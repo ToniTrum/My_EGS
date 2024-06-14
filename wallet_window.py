@@ -54,4 +54,11 @@ class WalletWindow(ChangeAccountWindow):
                                  WHERE UserID = {self.user[0]}""").fetchall()
         con.commit()
         con.close()
+
+        new_data = (self.user[0],
+                    self.user[1],
+                    self.user[2],
+                    float(self.balance_label.text()),
+                    self.user[4])
+        self.user = new_data
         self.init_main_menu_window_UI()
