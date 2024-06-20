@@ -2,8 +2,8 @@ from account_window import AccountWindow
 from PyQt6.QtWidgets import QPushButton, QLabel, QLineEdit
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QFileDialog, QMessageBox
-import sqlite3
 from PIL import Image
+import sqlite3
 
 
 class ChangeAccountWindow(AccountWindow):
