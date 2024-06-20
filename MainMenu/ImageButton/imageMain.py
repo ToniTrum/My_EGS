@@ -1,4 +1,4 @@
-from AppUi.ImageButton.image_button import Ui_game_button
+from MainMenu.ImageButton.image_button import Ui_game_button
 from PyQt6.QtWidgets import QWidget
 
 

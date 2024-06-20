@@ -9,7 +9,7 @@ class AccountWindow(MainMenuWindow):
         super().__init__()
 
         self.login_label_for_account = self.stacked.widget(3).findChild(QLabel, "login_label")
-        self.balance_label = self.stacked.widget(3).findChild(QLabel, "balance_label")
+        self.user_balance_label = self.stacked.widget(3).findChild(QLabel, "balance_label")
         self.id_label = self.stacked.widget(3).findChild(QLabel, "id_label")
         self.icon_label = self.stacked.widget(3).findChild(QLabel, "icon_label")
 
@@ -27,7 +27,7 @@ class AccountWindow(MainMenuWindow):
 
     def init_account_window_UI(self):
         self.login_label_for_account.setText(self.user[1])
-        self.balance_label.setText(str(self.user[3]))
+        self.user_balance_label.setText(str(self.user[3]))
         self.id_label.setText(str(self.user[0]))
         self.icon_label.setPixmap(QPixmap(self.user[4]))
 
@@ -41,7 +41,7 @@ class AccountWindow(MainMenuWindow):
             cur = con.cursor()
             result = cur.execute(f"""DELETE from users_data 
                                      WHERE UserID = {self.user[0]}""").fetchall()
-            result = cur.execute(f"DROP TABLE [{self.user[0]}]").fetchall()
+            result = cur.execute(f"DROP TABLE u{self.user[0]}").fetchall()
 
             con.commit()
             con.close()

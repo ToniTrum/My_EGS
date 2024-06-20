@@ -1,6 +1,6 @@
 from Registration.login_window_UI import Ui_Login_window
 from Registration.authorization_window_UI import Ui_authorization_window
-from AppUi.menuUI.main_menu_window_UI import Ui_main_menu_window
+from MainMenu.menuUI.main_menu_window_UI import Ui_main_menu_window
 from Account.change_account_window_UI import Ui_change_account_window
 from Wallet.wallet_window_UI import Ui_wallet_window
 from Registration.main_window import Ui_main_window
