@@ -1,6 +1,7 @@
 from register_stacked_window import RegisterWindow
-from AppUi.ImageButton.imageMain import GameButton
+from MainMenu.ImageButton.imageMain import GameButton
 from GamePage.game_page_window import GamePageWindow
+from Filter.filter_window import FilterWindow
 from PyQt6.QtWidgets import QHBoxLayout, QPushButton, QVBoxLayout, QLabel, QLineEdit
 from PyQt6.QtWidgets import QInputDialog
 import sqlite3
@@ -38,6 +39,9 @@ class MainMenuWindow(RegisterWindow):
 
         self.searchButton = self.stacked.widget(2).findChild(QPushButton, "searchButton")
         self.searchButton.clicked.connect(self.filtration)
+
+        self.filterButton = self.stacked.widget(2).findChild(QPushButton, "filterButton")
+        self.filterButton.clicked.connect(self.open_filter_window)
 
     def init_main_menu_window_UI(self, delete_widget=False):
         self.stacked.setCurrentIndex(2)
@@ -173,5 +177,11 @@ class MainMenuWindow(RegisterWindow):
                     break
             v_lay.addLayout(h_lay)
 
-    def filtration(self):
-        pass
+    def open_filter_window(self):
+        f_win = FilterWindow(self)
+        if f_win.exec():
+            pass
+
+    def filtration(self, checked_list, f_win):
+        f_win.close()
+
